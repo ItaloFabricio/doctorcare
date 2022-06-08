@@ -1,4 +1,11 @@
+window.addEventListener('scroll', onScroll)
+
 function onScroll() {
+    showNavOnScroll()  
+    showBackToTopButtonOnScroll()
+}
+
+function showNavOnScroll(){
 
     if(scrollY > 0){
         var element = document.getElementById("navigation")
@@ -6,6 +13,14 @@ function onScroll() {
     }else{
         var element = document.getElementById("navigation")
         element.classList.remove("scroll")
+    }
+}
+
+function showBackToTopButtonOnScroll(){
+    if(scrollY > 550){
+        backToTopButton.classList.add('show')
+    }else{
+        backToTopButton.classList.remove('show')
     }
 }
 
@@ -21,7 +36,7 @@ function closeMenu(){
 ScrollReveal({
     origin:'top',
     distance: '30px',
-    duration: 700,
+    duration: 900,
 }).reveal(`#home,
  #home img, 
  #home .stats, 
