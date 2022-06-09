@@ -3,24 +3,28 @@ window.addEventListener('scroll', onScroll)
 function onScroll() {
     showNavOnScroll()  
     showBackToTopButtonOnScroll()
-    activateMenuAtCurrentSection()
+
+    activateMenuAtCurrentSection(home);
+    activateMenuAtCurrentSection(services);
+    activateMenuAtCurrentSection(about);
+    activateMenuAtCurrentSection(contact);
 }
 
-function activateMenuAtCurrentSection(){
+function activateMenuAtCurrentSection(section){
     // linha alvo
-    const targetLine = scrollY + innerHeight / 2
+    const targetLine = scrollY + innerHeight / 2;
 
     // verificar se a seção passou da linha
     // quais dados vou precisar ?
 
     // o topo da seção
-    const sectionTop = home.offsetTop
+    const sectionTop = section.offsetTop;
 
     // a altura da seção
-    const sectionHeight = home.offsetHeight
+    const sectionHeight = section.offsetHeight;
     
     // o topo da seção chegou ou ultrapassou a linha alvo
-    const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop
+    const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop;
 
     // informações dos dados e da lógica
     console.log(
@@ -32,20 +36,23 @@ function activateMenuAtCurrentSection(){
     // quais dados vou precisar ?
 
     // a seção termina onde ?
-    const sectionEndsAt = sectionTop + sectionHeight
+    const sectionEndsAt = sectionTop + sectionHeight;
 
     // o final da seção passou da linha alvo   
-    const sectionEndPassedTargetLine =  sectionEndAt <= targetLine
+    const sectionEndPassedTargetLine =  sectionEndsAt <= targetLine
 
     console.log('O fundo da seção passou da linha ?', sectionEndPassedTargetLine)
 
     // limites da seção
     const sectionBoundaries = 
-    sectionTopReachOrPassedTargetLine && 
-    !sectionEndPassedTargetLine
+    sectionTopReachOrPassedTargetLine && !sectionEndPassedTargetLine;
 
+    const sectionId = section.getAttribute('id');
+    const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`);
+
+    menuElement.classList.remove('active');
     if(sectionBoundaries){
-        console.log('estou na seção HOME')
+         menuElement.classList.add('active');
     }
 
 }
