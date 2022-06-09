@@ -499,8 +499,21 @@ footer .social-links{
         display: grid;
     }
 
+    .col-a{
+        grid-area: A;
+    }
+
+    .col-b{
+        grid-area: B;
+    }
+
     section{
         padding-block: 16rem;
+    }
+
+    section h2{
+        font-size: 4rem;
+        line-height: 5.2rem;
     }
 
     /*========= NAVIGATION =========*/
@@ -639,13 +652,8 @@ footer .social-links{
      }
 
      #home .col-a{
-         grid-area: A;
          text-align: left;
          align-self: center;
-     }
-
-     #home .col-b{
-         grid-area: B;
      }
 
      #home h1{
@@ -681,5 +689,32 @@ footer .social-links{
      }
 
      /*========= SERVICES =========*/
-     
+     #services h2{
+         width: 47rem;
+         margin-inline: auto;
+     }
+
+     #services .cards{
+         flex-direction: row;
+         flex-wrap: wrap;
+     }
+
+     #services .card{
+         width: 30%;
+         flex-grow: 1;
+     }
+
+     /*========= ABOUT =========*/
+     #about .wrapper{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'B A';
+     }
+
+     #about .col-a {
+         align-self: center;
+     }
+
+     #about .content p{
+         margin-bottom: 0;
+     }
 }
